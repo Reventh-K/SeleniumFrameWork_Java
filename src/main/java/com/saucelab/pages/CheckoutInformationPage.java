@@ -1,11 +1,17 @@
 package com.saucelab.pages;
 
 import java.io.IOException;
+
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class YourInformationPage extends com.saucelab.base.Base {
+import com.saucelab.base.Base;
+
+public class CheckoutInformationPage extends Base {
+
+	Logger logs = StartLogging("YourInformationPage");
 
 	@FindBy(xpath = "//input[@id='first-name']")
 	WebElement firstName;
@@ -16,17 +22,20 @@ public class YourInformationPage extends com.saucelab.base.Base {
 	@FindBy(xpath = "//input[@value='CONTINUE']")
 	WebElement continueBtn;
 
-	public YourInformationPage() {
-		PageFactory.initElements(driver, this);
+	public CheckoutInformationPage() {
+		logs.fatal(driver);
+		PageFactory.initElements(GetDriver(), this);
 	}
 
-	public OverViewPage Checkout() throws IOException {
+	public void Checkout() throws IOException {
 
+		logs.info("Entering infomations");
 		firstName.sendKeys(readConfigData("Name"));
 		lastName.sendKeys(readConfigData("Last"));
 		ZipCode.sendKeys(readConfigData("ZipCode"));
 		continueBtn.click();
-		return new OverViewPage();
+		logs.info("Checking out successful");
+		//return new OverViewPage();
 
 	}
 

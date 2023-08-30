@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+	<Properties>
+		<Property name="filename">./Log4j_logs</Property>
+	</Properties>
+	<Appenders>
+		<RollingFile name="file"
+			fileName="${filename}/Testlogs.log"
+			filePattern="${filename}/Testlogs- %d{dd MMM yyyy hh-mm-ss}.log">
+			<PatternLayout>
+				<pattern>%d{hh:mm:ss} [%t] %-5level %logger{36} - %msg%n </pattern>
+			</PatternLayout>
+			<SizeBasedTriggeringPolicy size="1 MB" />
+		</RollingFile>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout
+				pattern="%d{HH:mm:ss:SSS} [%t] %-5level %logger{36} - %msg%n" />
+		</Console>
+	</Appenders>
+	<Loggers>
+		<Logger name="com.saucelab.base" level="info" additivity="false">
+			<AppenderRef ref="Console" />
+			<AppenderRef ref="file" />
+		</Logger>
+		<Root level="info">
+			<AppenderRef ref="Console" />
+			<AppenderRef ref="file" />
+		</Root>
+	</Loggers>
+</Configuration>

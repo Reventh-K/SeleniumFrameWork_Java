@@ -3,13 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.datadriven.tealiumdemo.testcases.ShoppingCartTest">
+      <class name="com.saucelab.Testcases.productPageTest">
         <methods>
-          <include name="shoppingCartTest"/>
-          <include name="tearDown"/>
-          <include name="browserSetup"/>
+          <include name="AddItemToCartTest"/>
+          <include name="TestSetup"/>
+          <include name="TestTearDown"/>
+          <include name="verifyURL"/>
+          <include name="VerifyFilterDropDown"/>
         </methods>
-      </class> <!-- com.datadriven.tealiumdemo.testcases.ShoppingCartTest -->
+      </class> <!-- com.saucelab.Testcases.productPageTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
